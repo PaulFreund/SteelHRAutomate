@@ -24,5 +24,5 @@ I will not upload the APK directly. At the moment this guide is targeted at adva
 8. Sign the apk with: jarsigner.exe -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my.keystore com.withings.wiscale2_modified.apk app (jarsigner.exe is part of the jdk)
 9. Optionally install the app with ADB or copy it to phone and install it after allowing unverified sources
 10. After installing you can send the intent action "android.intent.action.STEELHR" to the Health Mate app and set the Data URI to the text you want to have displayed, 18 characters is the limit
-11. With an app like Tasker or Automate you can generate a Script that runs in the background, watches for all notifications and sends the trigger to the Health Mate app. the .flo file in this repository is an example for the app Automate
-
+11. With an app like Tasker or Automate you can generate a Script that runs in the background, watches for all notifications and sends the trigger to the Health Mate app. the "Steel HR Notify.flo" file in this repository is an example for the app Automate
+12. Additionally there is to file "Steel HR Alarm.flo" which notifies every second on the set alarm time so in contrast to the alarm of the Health Mate app it does not stop until you go to your phone and accept it. I have overslept too many times from the weak vibrations and the alarm that stops after about 20 seconds.
