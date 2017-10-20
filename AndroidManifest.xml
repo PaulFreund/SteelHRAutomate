@@ -28,7 +28,7 @@
     <uses-permission android:name="com.withings.wiscale2.permission.C2D_MESSAGE"/>
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <application android:allowBackup="false" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/_APP_NAME_" android:name="com.withings.wiscale2.WithingsApplication" android:supportsRtl="true" android:theme="@style/Theme.Withings.WhiteToolbar.LightStatusBar">
+    <application android:allowBackup="false" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/_APP_NAME_" android:name="com.withings.wiscale2.HealthmateApplication" android:supportsRtl="true" android:theme="@style/Theme.Withings.WhiteToolbar.LightStatusBar">
         <meta-data android:name="com.samsung.android.health.permission.read" android:value="com.samsung.health.step_count"/>
         <activity android:configChanges="locale" android:launchMode="singleTop" android:name="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
             <intent-filter>
@@ -47,13 +47,6 @@
                 <data android:host="current" android:scheme="withings-bd2"/>
                 <data android:host="startActivityTracking" android:scheme="withings-bd2"/>
                 <data android:host="discourse" android:scheme="withings-bd2"/>
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:host="timeline" android:pathPrefix="/mfp-flow" android:scheme="withings-bd2"/>
-                <data android:host="timeline" android:pathPrefix="/mfp-flow-connexion" android:scheme="withings-bd2"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -96,7 +89,6 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
         </activity>
         <activity android:label="@string/_POIDS_" android:name="com.withings.wiscale2.ui.activity.WeightDetailActivity" android:screenOrientation="sensorPortrait"/>
-        <activity android:configChanges="locale" android:label="@string/_CREATE_NEW_USER_" android:name="com.withings.wiscale2.user.ui.AddUserActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity android:configChanges="locale" android:label="@string/_SHARING_DASHBOARD_TITLE_" android:launchMode="singleTop" android:name="com.withings.wiscale2.summary.sharing.EditSharingActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:configChanges="locale" android:label="" android:name="com.withings.devicesetup.network.ui.WifiSetupActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:configChanges="locale" android:excludeFromRecents="true" android:label="" android:name="com.withings.wiscale2.device.common.setup.PickUserForSetupActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustPan"/>
@@ -273,14 +265,7 @@
         <activity android:name="com.withings.wiscale2.bodytemperature.DownloadThermoAppActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/_UNKNOWN_MEASURES_" android:name="com.withings.wiscale2.measure.accountmeasure.unknown.UnknownMeasuresActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="" android:name="com.withings.wiscale2.summary.EditSummaryActivity" android:screenOrientation="sensorPortrait"/>
-        <activity android:label="@string/_REMINDERS_" android:name="com.withings.wiscale2.reminder.RemindersDiscoveryActivity" android:screenOrientation="sensorPortrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:host="reminders" android:scheme="withings-bd2"/>
-            </intent-filter>
-        </activity>
+        <activity android:label="@string/_REMINDERS_" android:name="com.withings.wiscale2.reminder.RemindersDiscoveryActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="" android:name="com.withings.wiscale2.reminder.ReminderDetailsActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="" android:name="com.withings.wiscale2.reminder.ReminderRingingActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.WhiteToolbar.TranslucentStatusBar"/>
         <activity android:label="" android:name="com.withings.wiscale2.programs.WellnessProgramDetailsActivity" android:screenOrientation="sensorPortrait"/>
@@ -308,7 +293,8 @@
         <activity android:name="com.withings.wiscale2.programs.ProgramMenuActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.withings.wiscale2.programs.WellnessProgramWebActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="" android:name="com.withings.wiscale2.user.ui.EditUserMeasureActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustResize|stateVisible"/>
-        <activity android:label="" android:name="com.withings.wiscale2.user.ui.EditUserEmailActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:label="" android:name="com.withings.wiscale2.user.ui.EditUserEmailActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name="com.withings.wiscale2.device.wsm.ui.Wsm02PostSetupActivity" android:screenOrientation="sensorPortrait"/>
         <provider android:authorities="com.withings.wiscale2.provider" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
         </provider>
