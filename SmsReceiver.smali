@@ -52,7 +52,7 @@
 
     aput-object v0, v3, v2
 
-    invoke-static {p0, v1, v3}, Lcom/withings/c/at;->b(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Object;)V
+    invoke-static {p0, v1, v3}, Lcom/withings/c/as;->b(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Object;)V
 
 
     .line 33
