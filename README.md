@@ -6,7 +6,7 @@ I will not upload the APK directly. At the moment this guide is targeted at adva
 
 # What you need
 
-* Noikia Health Mate app apk (com.withings.wiscale2) for example from apkmirror.com (3.3.0 was tested)
+* Noikia Health Mate app apk (com.withings.wiscale2) for example from apkmirror.com (3.5.1 was tested)
 * Java JDK (jdk1.8.0_131 in my case)
 * APKTool.jar (apktool_2.2.4.jar in my case)
 * (Optional) ADB
