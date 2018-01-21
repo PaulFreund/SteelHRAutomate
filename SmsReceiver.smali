@@ -40,6 +40,7 @@
 
     if-eqz v0, :cond_2
 
+    .line 22
     invoke-virtual {p2}, Landroid/content/Intent;->getDataString()Ljava/lang/String;
 
     move-result-object v0
@@ -52,8 +53,7 @@
 
     aput-object v0, v3, v2
 
-    invoke-static {p0, v1, v3}, Lcom/withings/c/as;->b(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Object;)V
-
+    invoke-static {p0, v1, v3}, Lcom/withings/util/log/a;->b(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Object;)V
 
     .line 33
     invoke-static {p1}, Lcom/withings/wiscale2/ans/a;->a(Landroid/content/Context;)Lcom/withings/wiscale2/ans/a;
