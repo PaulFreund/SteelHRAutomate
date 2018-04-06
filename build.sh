@@ -13,7 +13,7 @@ folder=${filename%.*}
 apktool -o $folder d $filename
 
 cp SteelHRAutomate/AndroidManifest.xml $folder
-cp SteelHRAutomate/SmsReceiver.smali $folder/smali_classes2/com/withings/wiscale2/ans
+cp SteelHRAutomate/SmsReceiver.smali $folder/smali/com/withings/wiscale2/ans
 
 apktool b $folder -o $target_filename
 

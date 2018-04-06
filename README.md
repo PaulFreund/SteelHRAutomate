@@ -6,7 +6,7 @@ I will not upload the APK directly. At the moment this guide is targeted at adva
 
 # What you need
 
-* Noikia Health Mate app apk (com.withings.wiscale2) for example from apkmirror.com (3.5.1 was tested)
+* Noikia Health Mate app apk (com.withings.wiscale2) for example from apkmirror.com (3.6.0 was tested)
 * Java JDK (jdk1.8.0_131 in my case)
 * APKTool.jar (apktool_2.2.4.jar in my case)
 * (Optional) ADB
@@ -18,7 +18,7 @@ I will not upload the APK directly. At the moment this guide is targeted at adva
 2. There will be a folder called com.withings.wiscale2
 3. Get the files from this repository
 4. In the folder com.withings.wiscale2 replace the AndroidManifest.xml file
-5. In the folder com.withings.wiscale2\smali_classes2\com\withings\wiscale2\ans replace the SmsReceiver.smali file
+5. In the folder com.withings.wiscale2\smali\com\withings\wiscale2\ans replace the SmsReceiver.smali file
 6. Pack the apk again with: java -jar apktool.jar b com.withings.wiscale2 -o com.withings.wiscale2_modified.apk
 7. Create a keystore with: keytool.exe -genkey -v -keystore my.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias app (choose any password, keytool.exe is part of the jdk)
 8. Sign the apk with: jarsigner.exe -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my.keystore com.withings.wiscale2_modified.apk app (jarsigner.exe is part of the jdk)

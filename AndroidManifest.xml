@@ -23,11 +23,12 @@
     <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
     <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
     <permission android:name="com.withings.wiscale2.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
     <uses-permission android:name="com.withings.wiscale2.permission.C2D_MESSAGE"/>
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <application android:allowBackup="false" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/_APP_NAME_" android:name="com.withings.wiscale2.HealthmateApplication" android:supportsRtl="true" android:theme="@style/Theme.Withings.WhiteToolbar.LightStatusBar">
         <meta-data android:name="com.samsung.android.health.permission.read" android:value="com.samsung.health.step_count"/>
         <activity android:configChanges="locale" android:launchMode="singleTop" android:name="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
@@ -54,47 +55,27 @@
             </intent-filter>
         </activity>
         <activity-alias android:exported="true" android:name="com.withings.wiscale2.StartActivity" android:targetActivity="com.withings.wiscale2.MainActivity"/>
-        <activity android:label="@string/_WIDGET_AIR_QUALITY_TITLE_" android:name="com.withings.wiscale2.measure.hfmeasure.ui.WS50Activity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:label="@string/_WIDGET_WSD_ENVIRONMENT_TITLE_" android:name="com.withings.wiscale2.measure.hfmeasure.ui.Wsd01EnvironmentActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="locale" android:label="@string/_ACTIVITY_" android:launchMode="singleTop" android:name="com.withings.wiscale2.activity.ui.ActivityActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="locale" android:label="@string/_SLEEP_" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.SleepActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="locale" android:label="@string/_SLEEP_" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="locale" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.SleepTutorialActivity" android:screenOrientation="sensorPortrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:host="sleepScoreTutorial" android:scheme="withings-bd2"/>
-            </intent-filter>
-        </activity>
+        <activity android:label="@string/_WIDGET_AIR_QUALITY_TITLE_" android:name="com.withings.wiscale2.measure.hfmeasure.ui.WS50Activity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:label="@string/_WIDGET_WSD_ENVIRONMENT_TITLE_" android:name="com.withings.wiscale2.measure.hfmeasure.ui.Wsd01EnvironmentActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:configChanges="locale" android:label="@string/_ACTIVITY_" android:launchMode="singleTop" android:name="com.withings.wiscale2.activity.ui.ActivityActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:configChanges="locale" android:label="@string/_SLEEP_" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.SleepActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:configChanges="locale" android:label="@string/_SLEEP_" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/sleepScore_duration" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreDurationActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/sleepScore_snoring" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreSnoringActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
+        <activity android:label="@string/sleepScore_snoring" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreSnoringDisabledActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/sleepScore_timeToSleep" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreTimeToSleepActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/sleepScore_timeToGetUp" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreTimeToGetUpActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/sleepScore_recovery" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreRecoveryActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/sleepScore_interruptions" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreInterruptionsActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/sleepScore_nightHR" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreHeartrateActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
-        <activity android:label="@string/_FOOD_" android:name="com.withings.wiscale2.food.ui.display.FoodActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:label="@string/_OBJECTIVE_WEIGHT_TARGET_TITLE_" android:launchMode="singleTop" android:name="com.withings.wiscale2.measure.goal.ui.WeightGoalActivity" android:screenOrientation="sensorPortrait">
+        <activity android:label="@string/_FOOD_" android:name="com.withings.wiscale2.food.ui.display.FoodActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:label="@string/_OBJECTIVE_WEIGHT_TARGET_TITLE_" android:launchMode="singleTop" android:name="com.withings.wiscale2.measure.goal.ui.WeightGoalActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:host="weightgoal" android:scheme="withings-bd2"/>
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
         </activity>
         <activity android:configChanges="locale" android:label="" android:launchMode="singleTop" android:name="com.withings.wiscale2.measure.accountmeasure.ui.add.AddMeasureActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.AddMeasure">
             <intent-filter>
@@ -104,7 +85,6 @@
                 <data android:host="inAppHeartRate" android:scheme="withings-bd2"/>
                 <data android:host="addMeasure" android:scheme="withings-bd2"/>
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
         </activity>
         <activity android:label="@string/_POIDS_" android:name="com.withings.wiscale2.ui.activity.WeightDetailActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:configChanges="locale" android:label="@string/_SHARING_DASHBOARD_TITLE_" android:launchMode="singleTop" android:name="com.withings.wiscale2.summary.sharing.EditSharingActivity" android:screenOrientation="sensorPortrait"/>
@@ -123,7 +103,6 @@
         <activity android:configChanges="locale" android:excludeFromRecents="true" android:label="@string/_JOIN_WITHINGS_" android:name="com.withings.wiscale2.account.ui.NeedAccountActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="locale" android:label="@string/_LEARN_MORE_" android:launchMode="singleTop" android:name="com.withings.wiscale2.ui.activity.PartnerDetailActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustPan"/>
         <activity android:label="@string/_INVITATIONS_" android:name="com.withings.wiscale2.ui.activity.InvitationListActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -132,21 +111,15 @@
             </intent-filter>
         </activity>
         <activity android:label="" android:name="com.withings.wiscale2.device.common.ui.DeviceInfoActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
         </activity>
-        <activity android:label="@string/_SETTINGS_" android:name="com.withings.wiscale2.settings.SettingsActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:label="@string/_MENU_UNITS_" android:name="com.withings.wiscale2.settings.UnitsActivity" android:parentActivityName="com.withings.wiscale2.settings.SettingsActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.settings.SettingsActivity"/>
-        </activity>
+        <activity android:label="@string/_SETTINGS_" android:name="com.withings.wiscale2.settings.SettingsActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:label="@string/_MENU_UNITS_" android:name="com.withings.wiscale2.settings.UnitsActivity" android:parentActivityName="com.withings.wiscale2.settings.SettingsActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/_INSTALL_A_DEVICE_" android:name="com.withings.wiscale2.device.common.ui.SetupChooseDeviceActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -155,27 +128,15 @@
                 <data android:host="incompatible-hwa" android:scheme="withings-bd2"/>
             </intent-filter>
         </activity>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_MY_BADGES_" android:name="com.withings.wiscale2.badge.ui.BadgesActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:label="@string/_WITHINGS_INSIGHTS_" android:name="com.withings.wiscale2.ui.activity.InsightActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Gradient">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="orientation|screenSize" android:label="@string/_ACTIVITY_TRACKING_" android:name="com.withings.wiscale2.stepcounter.ui.activity.EnableInAppTrackingActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Gradient">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:name="com.withings.wiscale2.device.wpm.ui.Wpm02Activity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:label="" android:name="com.withings.wiscale2.device.wpm.ui.Wpm0203StartMeasureActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_MY_BADGES_" android:name="com.withings.wiscale2.badge.ui.BadgesActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:label="@string/_WITHINGS_INSIGHTS_" android:name="com.withings.wiscale2.ui.activity.InsightActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Gradient"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/_ACTIVITY_TRACKING_" android:name="com.withings.wiscale2.stepcounter.ui.activity.EnableInAppTrackingActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Gradient"/>
+        <activity android:name="com.withings.wiscale2.device.wpm.ui.Wpm02Activity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.WhiteToolbar.TranslucentStatusBar"/>
+        <activity android:label="" android:name="com.withings.wiscale2.device.wpm.ui.Wpm0203StartMeasureActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/_BLOOD_PRESSURE_" android:name="com.withings.wiscale2.heart.HeartDetailActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.withings.wiscale2.onboarding.OnBoardingActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Onboarding"/>
         <activity android:label="" android:name="com.withings.wiscale2.onboarding.JoiningActivity" android:screenOrientation="sensorPortrait"/>
-        <activity android:label="@string/_BADGE_NEW_" android:name="com.withings.wiscale2.badge.ui.BadgeDetailActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
+        <activity android:label="@string/_BADGE_NEW_" android:name="com.withings.wiscale2.badge.ui.BadgeDetailActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.withings.wiscale2.webcontent.HMWebActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.withings.wiscale2.webcontent.HelpCenterWebActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.withings.wiscale2.webcontent.StoreWebActivity" android:screenOrientation="sensorPortrait"/>
@@ -190,28 +151,14 @@
                 <data android:host="com.withings.wiscale2" android:scheme="amzn"/>
             </intent-filter>
         </activity>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.alarm.ui.hwa.HwaSetAlarmActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdSetAlarmActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.alarm.ui.hwa.HwaSetAlarmActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdSetAlarmActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.withings.webviews.WebActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdMultipleAlarmActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.alarm.ui.hwa.HwaMultipleAlarmActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_WSD01_" android:name="com.withings.wiscale2.device.wsd.ui.WsdMoodLightActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_SLEEP_" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdSleepNapActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_MEDIA_" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdMediaActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdMultipleAlarmActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.alarm.ui.hwa.HwaMultipleAlarmActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_WSD01_" android:name="com.withings.wiscale2.device.wsd.ui.WsdMoodLightActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_SLEEP_" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdSleepNapActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_MEDIA_" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdMediaActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_PROGRAMS_" android:name="com.withings.wiscale2.alarm.ui.wsd.programs.WsdProgramActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_WEBRADIOS_CATEGORY_TITLE_" android:name="com.withings.wiscale2.webradios.ui.WsdWebRadioActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/_SPOTIFY_" android:launchMode="singleTop" android:name="com.withings.wiscale2.alarm.ui.wsd.WsdSpotifyActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Alarm"/>
@@ -222,11 +169,8 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:host="stepgoal" android:scheme="withings-bd2"/>
             </intent-filter>
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
         </activity>
-        <activity android:label="@string/_GOAL_SLEEP_TITLE_" android:name="com.withings.wiscale2.target.SleepTargetActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
+        <activity android:label="@string/_GOAL_SLEEP_TITLE_" android:name="com.withings.wiscale2.target.SleepTargetActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:configChanges="locale" android:label="@string/_GOOGLE_FIT_" android:launchMode="singleTop" android:name="com.withings.wiscale2.partner.ui.GoogleFitPartnerActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:label="" android:launchMode="singleTask" android:name="com.withings.devicesetup.ui.SetupActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:label="" android:launchMode="singleTask" android:name="com.withings.devicesetup.location.EnableBluetoothScanActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.WhiteToolbar.LightStatusBar"/>
@@ -242,23 +186,15 @@
             </intent-filter>
         </activity>
         <activity android:configChanges="keyboardHidden|locale|screenSize" android:label="@string/_WS50_SETUP_LOCATION_TITLE_" android:name="com.withings.wiscale2.device.scale.location.PickLocationActivity" android:screenOrientation="sensorPortrait"/>
-        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:label="@string/_CHAT_SCREEN_TITLE_" android:launchMode="singleTop" android:name="com.withings.wiscale2.chat.ui.ChatActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustResize|stateHidden">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:label="@string/_AVERAGE_HEART_RATE_" android:name="com.withings.wiscale2.heart.heartrate.HeartRateDayActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
-        <activity android:label="@string/_HEART_" android:name="com.withings.wiscale2.heart.HeartHistoryActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:label="@string/_CHAT_SCREEN_TITLE_" android:launchMode="singleTop" android:name="com.withings.wiscale2.chat.ui.ChatActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:label="@string/_AVERAGE_HEART_RATE_" android:name="com.withings.wiscale2.heart.heartrate.HeartRateDayActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:label="@string/_HEART_" android:name="com.withings.wiscale2.heart.HeartHistoryActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/_HEART_RATE_" android:name="com.withings.wiscale2.heart.heartrate.HeartRateMeasureListActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/_BLOOD_PRESSURE_" android:name="com.withings.wiscale2.heart.bloodpressure.BloodPressureMeasureListActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/_PWV_" android:name="com.withings.wiscale2.heart.pwv.PwvMeasureListActivity" android:screenOrientation="sensorPortrait"/>
-        <activity android:label="@string/_STORE_WEIGHT_TITLE_" android:name="com.withings.wiscale2.weight.WeightActivity" android:screenOrientation="sensorPortrait">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.withings.wiscale2.MainActivity"/>
-        </activity>
+        <activity android:label="@string/_STORE_WEIGHT_TITLE_" android:name="com.withings.wiscale2.weight.WeightActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/_NB_TOTAL_WEIGHT_" android:name="com.withings.wiscale2.weigth.WeightListActivity" android:screenOrientation="sensorPortrait"/>
-        <activity android:label="@string/_TAILLE_" android:name="com.withings.wiscale2.height.HeightActivity" android:parentActivityName="com.withings.wiscale2.MainActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:label="@string/_TAILLE_" android:name="com.withings.wiscale2.height.HeightActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="@string/_HEIGHT_MEASUREMENTS_" android:name="com.withings.wiscale2.height.HeightListActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="" android:name="com.withings.wiscale2.timeline.webservice.ui.CelebrationActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.Gradient"/>
         <activity android:label="" android:name="com.withings.wiscale2.food.ui.setup.FoodSetupActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.FoodGradient"/>
@@ -311,10 +247,13 @@
         <activity android:name="com.withings.wiscale2.programs.WellnessProgramWebActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:label="" android:name="com.withings.wiscale2.user.ui.EditUserMeasureActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustResize|stateVisible"/>
         <activity android:label="" android:name="com.withings.wiscale2.user.ui.EditUserEmailActivity" android:screenOrientation="sensorPortrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name="com.withings.wiscale2.device.wsm02.ui.Wsm02PostSetupActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.withings.wiscale2.device.scale.ui.ScaleScreenOrderActivity" android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.withings.wiscale2.device.scale.ui.ScalePostInstallActivityV2" android:screenOrientation="sensorPortrait"/>
         <activity android:label="SleepScoreRegularityActivity" android:launchMode="singleTop" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepScoreRegularityActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
+        <activity android:label="SleepNapsListActivity" android:name="com.withings.wiscale2.sleep.ui.sleepscore.SleepNapListActivity" android:parentActivityName="com.withings.wiscale2.sleep.ui.sleepscore.SleepActivityV2" android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.withings.wiscale2.sleep.ui.sleepscore.SecondarySleepActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.withings.wiscale2.device.common.tutorial.TutorialActivity" android:screenOrientation="sensorPortrait" android:theme="@style/Theme.Withings.WhiteToolbar.TranslucentStatusBar"/>
+        <activity android:name="com.withings.wiscale2.workout.WorkoutMapActivity" android:screenOrientation="sensorPortrait"/>
         <provider android:authorities="com.withings.wiscale2.provider" android:exported="false" android:grantUriPermissions="true" android:name="com.withings.wiscale2.utils.MediaFileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
         </provider>
@@ -323,6 +262,7 @@
         <service android:name="com.withings.wiscale2.stepcounter.counter.google.FitStepCounterService"/>
         <service android:name="com.withings.wiscale2.stepcounter.counter.samsung.SHealthStepCounterService"/>
         <service android:name="com.withings.wiscale2.device.common.SyncService"/>
+        <service android:name="com.withings.wiscale2.workout.WorkoutTrackingService"/>
         <receiver android:name="com.withings.wiscale2.appUpgrade.OnUpgradeReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
@@ -456,39 +396,42 @@
         </service>
         <service android:exported="false" android:name="com.withings.library.gcm.RegistrationIntentService"/>
         <service android:enabled="true" android:name="com.withings.wiscale2.device.wsd.notification.WsdWakeUpAlarmService"/>
-        <activity android:name="com.withings.appVersion.beta.NewReleaseActivity"/>
-        <service android:exported="false" android:name="com.withings.appVersion.beta.GcmRelease$RegisterService"/>
-        <service android:exported="false" android:name="com.withings.appVersion.beta.NewReleaseChecker$CheckService"/>
-        <service android:enabled="false" android:icon="@drawable/ic_device_whours_white_24dp" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.device.hwa.HwaAlarmTileService" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+		<activity android:name="com.withings.appVersion.beta.NewReleaseActivity"/>
+		<service android:exported="false" android:name="com.withings.appVersion.beta.GcmRelease$RegisterService"/>
+		<service android:exported="false" android:name="com.withings.appVersion.beta.NewReleaseChecker$CheckService"/>
+		<service android:enabled="false" android:icon="@drawable/ic_device_whours_white_24dp" android:label="@string/_ALARM_" android:name="com.withings.wiscale2.device.hwa.HwaAlarmTileService" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
         </service>
         <meta-data android:name="android.support.VERSION" android:value="26.1.0"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
         <provider android:authorities="com.withings.wiscale2.firebaseperfprovider" android:exported="false" android:initOrder="101" android:name="com.google.firebase.perf.provider.FirebasePerfProvider"/>
         <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
-        <receiver android:enabled="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+        <receiver android:enabled="true" android:exported="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER"/>
             </intent-filter>
         </receiver>
         <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
-        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
-        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
         <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
                 <category android:name="com.withings.wiscale2"/>
             </intent-filter>
         </receiver>
-        <receiver android:exported="false" android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"/>
         <service android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdService">
             <intent-filter android:priority="-500">
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
         <provider android:authorities="com.withings.wiscale2.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
-        <meta-data android:name="android.arch.lifecycle.VERSION" android:value="27.0.0-SNAPSHOT"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="com.withings.wiscale2.lifecycle-trojan" android:exported="false" android:multiprocess="true" android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"/>
     </application>
 </manifest>
